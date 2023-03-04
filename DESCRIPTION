@@ -2,25 +2,26 @@ Package: UNEPItargets
 Title: Compute 'UNEPI' target Population
 Version: 0.0.0.9000
 Authors@R: c(
-    person("Robinson", "Amanyiraho", , "amanyiraho@gmail.com", role = c("cre", "aut",  "cph"),
+    person("Robinson", "Amanyiraho", , "amanyiraho@gmail.com", role = c("cre", "aut"),
            comment = c(ORCID = "0000-0002-7747-1367"))
   )
 Description: Tools to compute `Uganda National Expanded Program on Immunization (UNEPI)` target population.
-License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 LazyData: true
-URL: https://github.com/amanyiraho/UNEPItargets
+URL: https://github.com/amanyiraho/UNEPItargets,
+    http://www.amanyiraho.com/UNEPItargets/
 BugReports: https://github.com/amanyiraho/UNEPItargets/issues
 Depends: 
     R (>= 2.10)
 Suggests: 
+    dplyr (>= 1.0.10),
     spelling,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    UBOSpopulation (>= 0.0.0.9000)
 Language: en-US
 Config/testthat/edition: 3
-Imports: 
-    UBOSpopulation (>= 0.0.0.9000)
 Remotes: 
     amanyiraho/UBOSpopulation
+License: MIT + file LICENSE

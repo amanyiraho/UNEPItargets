@@ -1,3 +1,11 @@
+^renv$
+^renv\.lock$
 ^UNEPItargets\.Rproj$
 ^\.Rproj\.user$
 ^README\.Rmd$
+^data-raw$
+^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^LICENSE\.md$

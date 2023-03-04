@@ -9,6 +9,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
+  warning = F,
+  message = F,
   out.width = "100%"
 )
 ```
@@ -16,9 +18,15 @@ knitr::opts_chunk$set(
 # UNEPItargets
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/amanyiraho/UNEPItargets/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/amanyiraho/UNEPItargets/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of UNEPItargets is to ...
+The goal of UNEPItargets is to provide tools for the computations below;
+
+```{r echo=FALSE, out.width = "100%", fig.align = "center"}
+knitr::include_graphics("man/figures/UNEPI-target-summary.png")
+```
+
 
 ## Installation
 
@@ -31,9 +39,60 @@ devtools::install_github("amanyiraho/UNEPItargets")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you compute some common target populations
+
+Load package
 
 ```{r example}
-#library(UNEPItargets)
-## basic example code
+library(UNEPItargets)
 ```
+
+
+Get some population data
+
+```{r}
+## install the UBOSpopulation package for UBOS population estimates dataset
+#devtools::install_github("amanyiraho/UBOSpopulation")
+
+library(UBOSpopulation)
+library(dplyr)
+```
+
+
+```{r}
+## filter out 2023 district level data
+uganda_population_2023 <- population_estimates |>
+  filter(lower_local_government == "District_level"&
+           categroy == "total",
+         year == 2023) |>
+  select(district_city, population)
+
+head(uganda_population_2023)
+```
+
+Get the national population estimate
+
+```{r}
+uganda_total_population <- sum(uganda_population_2023$population)
+uganda_total_population
+```
+
+#### Live births
+
+```{r}
+live_births_0_11m(uganda_total_population)
+```
+
+
+#### Surviving infants
+
+```{r}
+surviving_infants_0_11m(uganda_total_population)
+```
+
+#### Girls 10 years
+
+```{r}
+girls_10y(uganda_total_population)
+```
+
